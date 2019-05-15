@@ -6,19 +6,14 @@ import {
   Form,
   Button,
   Input,
-  // Select,
   Container,
   Header
 } from "semantic-ui-react";
 
-// const options = [
-//   { key: "phone", text: "Phone", value: "phone" },
-//   { key: "search", text: "Invoice", value: "search" }
-// ];
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "", transactions: [], method: "phone" };
+    this.state = { value: "", details: [], method: "search" };
 
     this.changeValue = this.changeValue.bind(this);
     this.changeMethod = this.changeMethod.bind(this);
@@ -38,11 +33,11 @@ class App extends React.Component {
 
     axios
       .get(
-        `https://laundry-microservice-transact.herokuapp.com/api/v1/transactions/${
+        `https://laundry-microservice-transact.herokuapp.com/api/v1/details/${
           this.state.method
         }/${this.state.value}`
       )
-      .then(response => this.setState({ transactions: response.data }));
+      .then(response => this.setState({ details: response.data }));
   }
 
   render() {
@@ -52,7 +47,7 @@ class App extends React.Component {
         <br />
         <Container text>
           <Header as="h2" textAlign="center">
-            Lihat Riwayat Transaksi
+            Lihat Proses Laundry
           </Header>
           <p>
             <Form>
@@ -66,12 +61,6 @@ class App extends React.Component {
                 <input />
                 {/* <Select compact options={options} /> */}
                 <select onChange={this.changeMethod}>
-                  <option
-                    value="phone"
-                    selected={this.state.method === "phone"}
-                  >
-                    telpon
-                  </option>
                   <option
                     value="search"
                     selected={this.state.method === "search"}
@@ -95,26 +84,20 @@ class App extends React.Component {
                 <Table.Row>
                   <Table.HeaderCell>No</Table.HeaderCell>
                   <Table.HeaderCell>Invoice</Table.HeaderCell>
-                  <Table.HeaderCell>datein</Table.HeaderCell>
-                  <Table.HeaderCell>dateout</Table.HeaderCell>
-                  <Table.HeaderCell>member</Table.HeaderCell>
-                  <Table.HeaderCell>phone</Table.HeaderCell>
-                  <Table.HeaderCell>Grand Total</Table.HeaderCell>
-                  <Table.HeaderCell>status</Table.HeaderCell>
+                  <Table.HeaderCell>Paket</Table.HeaderCell>
+                  <Table.HeaderCell>jumlah</Table.HeaderCell>
+                  <Table.HeaderCell>proses</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
 
               <Table.Body>
-                {this.state.transactions.map((transaction, index) => (
-                  <Table.Row key={transaction._id}>
+                {this.state.details.map((detail, index) => (
+                  <Table.Row key={detail._id}>
                     <Table.Cell>{index + 1}</Table.Cell>
-                    <Table.Cell>{transaction.invoice}</Table.Cell>
-                    <Table.Cell>{transaction.dateIn}</Table.Cell>
-                    <Table.Cell>{transaction.dateOut}</Table.Cell>
-                    <Table.Cell>{transaction.member.member_name}</Table.Cell>
-                    <Table.Cell>{transaction.member.phone}</Table.Cell>
-                    <Table.Cell>{transaction.grandTotal}</Table.Cell>
-                    <Table.Cell>{transaction.status.status_name}</Table.Cell>
+                    <Table.Cell>{detail.transaction.invoice}</Table.Cell>
+                    <Table.Cell>{detail.service.serviceName}</Table.Cell>
+                    <Table.Cell>{detail.qty}</Table.Cell>
+                    <Table.Cell>{detail.process.process_name}</Table.Cell>
                   </Table.Row>
                 ))}
               </Table.Body>

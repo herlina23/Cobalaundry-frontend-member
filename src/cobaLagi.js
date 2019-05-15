@@ -95,12 +95,9 @@ class App extends React.Component {
                 <Table.Row>
                   <Table.HeaderCell>No</Table.HeaderCell>
                   <Table.HeaderCell>Invoice</Table.HeaderCell>
-                  <Table.HeaderCell>datein</Table.HeaderCell>
-                  <Table.HeaderCell>dateout</Table.HeaderCell>
                   <Table.HeaderCell>member</Table.HeaderCell>
                   <Table.HeaderCell>phone</Table.HeaderCell>
                   <Table.HeaderCell>Grand Total</Table.HeaderCell>
-                  <Table.HeaderCell>status</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
 
@@ -109,12 +106,9 @@ class App extends React.Component {
                   <Table.Row key={transaction._id}>
                     <Table.Cell>{index + 1}</Table.Cell>
                     <Table.Cell>{transaction.invoice}</Table.Cell>
-                    <Table.Cell>{transaction.dateIn}</Table.Cell>
-                    <Table.Cell>{transaction.dateOut}</Table.Cell>
                     <Table.Cell>{transaction.member.member_name}</Table.Cell>
                     <Table.Cell>{transaction.member.phone}</Table.Cell>
                     <Table.Cell>{transaction.grandTotal}</Table.Cell>
-                    <Table.Cell>{transaction.status.status_name}</Table.Cell>
                   </Table.Row>
                 ))}
               </Table.Body>
