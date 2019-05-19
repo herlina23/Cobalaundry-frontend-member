@@ -18,7 +18,7 @@ import {
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: "", struks: [], method: "phone" };
+    this.state = { value: "", transactions: [], method: "phone" };
 
     this.changeValue = this.changeValue.bind(this);
     this.changeMethod = this.changeMethod.bind(this);
@@ -38,22 +38,21 @@ class App extends React.Component {
 
     axios
       .get(
-        `https://laundry-microservice-users.herokuapp.com/api/v1/struks/${
-          this.state.value
-        }`
+        `https://laundry-microservice-transact.herokuapp.com/api/v1/transactions/${
+          this.state.method
+        }/${this.state.value}`
       )
-      .then(response => this.setState({ details: response.data }));
+      .then(response => this.setState({ transactions: response.data }));
   }
 
   render() {
-    console.log(this.state.struks);
     return (
       <div>
         <br />
         <br />
         <Container text>
           <Header as="h2" textAlign="center">
-            Lihat Transaksi
+            Lihat Riwayat Transaksi
           </Header>
           <p>
             <Form>
@@ -65,7 +64,21 @@ class App extends React.Component {
                 onChange={this.changeValue}
               >
                 <input />
-
+                {/* <Select compact options={options} /> */}
+                <select onChange={this.changeMethod}>
+                  <option
+                    value="phone"
+                    selected={this.state.method === "phone"}
+                  >
+                    telpon
+                  </option>
+                  <option
+                    value="search"
+                    selected={this.state.method === "search"}
+                  >
+                    invoice
+                  </option>
+                </select>
                 <Button
                   type="submit"
                   value="Submit"
@@ -92,16 +105,16 @@ class App extends React.Component {
               </Table.Header>
 
               <Table.Body>
-                {this.state.struks.map((struk, index) => (
-                  <Table.Row key={struk._id}>
+                {this.state.transactions.map((transaction, index) => (
+                  <Table.Row key={transaction._id}>
                     <Table.Cell>{index + 1}</Table.Cell>
-                    <Table.Cell>{struk.invoice}</Table.Cell>
-                    <Table.Cell>{struk.dateIn}</Table.Cell>
-                    <Table.Cell>{struk.dateOut}</Table.Cell>
-                    <Table.Cell>{struk.service}</Table.Cell>
-                    <Table.Cell>{struk.qty}</Table.Cell>
-                    <Table.Cell>{struk.unit}</Table.Cell>
-                    <Table.Cell>{struk.process}</Table.Cell>
+                    <Table.Cell>{transaction.invoice}</Table.Cell>
+                    <Table.Cell>{transaction.dateIn}</Table.Cell>
+                    <Table.Cell>{transaction.dateOut}</Table.Cell>
+                    <Table.Cell>{transaction.member.member_name}</Table.Cell>
+                    <Table.Cell>{transaction.member.phone}</Table.Cell>
+                    <Table.Cell>{transaction.grandTotal}</Table.Cell>
+                    <Table.Cell>{transaction.status.status_name}</Table.Cell>
                   </Table.Row>
                 ))}
               </Table.Body>
