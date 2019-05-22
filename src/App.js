@@ -41,6 +41,9 @@ class App extends Component {
                   <Table.HeaderCell />
                 </Table.Row>
               </Table.Header>
+              <p>cek cek</p>
+
+              {this.state.users.pengeluaran.map(item => console.log(item))}
 
               <Table.Body>
                 <Table.Row>
@@ -48,34 +51,28 @@ class App extends Component {
                   <Table.Cell>{this.state.users.pemasukan}</Table.Cell>
                   <Table.Cell />
                   <Table.Cell>Penggajian</Table.Cell>
-                  <Table.Cell>
-                    {this.state.users.pengeluaran.outcomes[0].paybill}
-                  </Table.Cell>
+                  <Table.Cell>{this.state.users.keluarSalary}</Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell />
                   <Table.Cell />
                   <Table.Cell />
                   <Table.Cell>Pembelian Barang</Table.Cell>
-                  <Table.Cell>
-                    {this.state.users.pengeluaran.items[0].bayar_barang}
-                  </Table.Cell>
+                  <Table.Cell>{this.state.users.keluarItem}</Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell />
                   <Table.Cell />
                   <Table.Cell />
                   <Table.Cell>Pembayaran lain-lain</Table.Cell>
-                  <Table.Cell>
-                    {this.state.users.pengeluaran.salaries[0].paysalary}
-                  </Table.Cell>
+                  <Table.Cell>{this.state.users.KeluarOutcome}</Table.Cell>
                 </Table.Row>
                 <Table.Row>
                   <Table.Cell>Total</Table.Cell>
                   <Table.Cell>{this.state.users.pemasukan}</Table.Cell>
                   <Table.Cell />
                   <Table.Cell />
-                  <Table.Cell />
+                  <Table.Cell>{this.state.users.keluar}</Table.Cell>
                 </Table.Row>
                 <Table.Row active>
                   <Table.Cell>Laba</Table.Cell>
@@ -87,24 +84,6 @@ class App extends Component {
               </Table.Body>
             </Table>
           </p>
-          {/* <p>
-            <div className="widget">
-              {this.state.pengeluaran.map((keluar, index) => {
-                return (
-                  <div key={index}>
-                    {keluar.outcomes.map((subitem, i) => {
-                      return (
-                        <ul>
-                          <li>{subitem.outcomein}</li>
-                          <li>{subitem.paybill}</li>
-                        </ul>
-                      );
-                    })}
-                  </div>
-                );
-              })}
-            </div>
-          </p> */}
         </Container>
       </div>
     );

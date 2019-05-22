@@ -96,7 +96,9 @@ class App extends React.Component {
                     <Table.Cell>{index + 1}</Table.Cell>
                     <Table.Cell>{detail.transaction.invoice}</Table.Cell>
                     <Table.Cell>{detail.service.serviceName}</Table.Cell>
-                    <Table.Cell>{detail.qty}</Table.Cell>
+                    <Table.Cell>
+                      {detail.qty} {detail.service.unit}
+                    </Table.Cell>
                     <Table.Cell>{detail.process.process_name}</Table.Cell>
                   </Table.Row>
                 ))}
