@@ -99,6 +99,8 @@ class ContactPage extends React.Component {
                     <Table.Cell>
                       {detail.qty} {detail.service.unit}
                     </Table.Cell>
+                    <Table.Cell>{detail.lastupadte}</Table.Cell>
+                    <Table.Cell>{detail.updatedAt}</Table.Cell>
                     <Table.Cell>{detail.process.process_name}</Table.Cell>
                   </Table.Row>
                 ))}
