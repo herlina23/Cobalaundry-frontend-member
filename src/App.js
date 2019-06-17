@@ -16,8 +16,10 @@ class Router extends Component {
     return (
       <BrowserRouter>
         <ResponsiveContainer>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/home" component={HomePage} />
+          <Route exact path="/" />
+          <Route exact path="/home" />
+          {/* <Route exact path="/" component={HomePage} />
+          <Route exact path="/home" component={HomePage} /> */}
           {/* <Route exact path="/about" component={AboutPage} />
           <Route exact path="/contact" component={ContactPage} /> */}
           <Route exact path="/layanan" component={AboutPage} />
