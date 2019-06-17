@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import { Button, Container, Header, Icon } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 
 // E3QOSmMbn;
 
@@ -39,28 +40,33 @@ const HomepageHeading = ({ mobile }) => (
         marginTop: mobile ? "0.2em" : "1em"
       }}
     />
-    <Button
-      primary
-      size="huge"
-      href={"/layanan"}
-      target="_blank"
-      color="teal"
-      inverted
-    >
-      Cek Penawaran Kami
-      <Icon name="right arrow" />
-    </Button>
 
-    <Button
-      primary
-      size="huge"
-      href={"/proses"}
-      target="_blank"
-      color="olive"
-      inverted
-    >
-      <Icon name="left arrow" /> Cek Proses Laundry
-    </Button>
+    <Link to={`/layanan`}>
+      <Button
+        primary
+        size="huge"
+        // href={"/layanan"}
+        target="_blank"
+        color="teal"
+        inverted
+      >
+        Cek Penawaran Kami
+        <Icon name="right arrow" />
+      </Button>
+    </Link>
+
+    <Link to={`/proses`}>
+      <Button
+        primary
+        size="huge"
+        href={"/proses"}
+        target="_blank"
+        color="olive"
+        inverted
+      >
+        <Icon name="left arrow" /> Cek Proses Laundry
+      </Button>
+    </Link>
   </Container>
 );
 
