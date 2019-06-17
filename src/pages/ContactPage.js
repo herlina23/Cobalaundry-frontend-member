@@ -85,7 +85,8 @@ class ContactPage extends React.Component {
                   <Table.HeaderCell>No</Table.HeaderCell>
                   <Table.HeaderCell>Invoice</Table.HeaderCell>
                   <Table.HeaderCell>Paket</Table.HeaderCell>
-                  <Table.HeaderCell>jumlah</Table.HeaderCell>
+                  <Table.HeaderCell>Jumlah</Table.HeaderCell>
+                  <Table.HeaderCell>Waktu Update</Table.HeaderCell>
                   <Table.HeaderCell>proses</Table.HeaderCell>
                 </Table.Row>
               </Table.Header>
@@ -99,7 +100,7 @@ class ContactPage extends React.Component {
                     <Table.Cell>
                       {detail.qty} {detail.service.unit}
                     </Table.Cell>
-                    <Table.Cell>{detail.lastupadte}</Table.Cell>
+                    {/* <Table.Cell>{detail.lastupadte}</Table.Cell> */}
                     <Table.Cell>{detail.updatedAt}</Table.Cell>
                     <Table.Cell>{detail.process.process_name}</Table.Cell>
                   </Table.Row>
