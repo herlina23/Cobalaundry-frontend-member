@@ -33,14 +33,15 @@ class ContactPage extends React.Component {
 
     axios
       .get(
-        `https://laundry-microservice-transact.herokuapp.com/api/v1/details/${
-          this.state.method
-        }/${this.state.value}`
+        `https://laundry-microservice-users.herokuapp.com/api/v1/totals/bayar?i=${
+          this.state.value
+        }`
       )
       .then(response => this.setState({ details: response.data }));
   }
 
   render() {
+    console.log(this.state.details);
     return (
       <div>
         <br />
@@ -59,15 +60,16 @@ class ContactPage extends React.Component {
                 onChange={this.changeValue}
               >
                 <input />
-                {/* <Select compact options={options} /> */}
-                <select onChange={this.changeMethod}>
+
+                {/* <select onChange={this.changeMethod}>
                   <option
                     value="search"
                     selected={this.state.method === "search"}
                   >
                     invoice
                   </option>
-                </select>
+                </select> */}
+
                 <Button
                   type="submit"
                   value="Submit"
@@ -95,14 +97,19 @@ class ContactPage extends React.Component {
                 {this.state.details.map((detail, index) => (
                   <Table.Row key={detail._id}>
                     <Table.Cell>{index + 1}</Table.Cell>
-                    <Table.Cell>{detail.transaction.invoice}</Table.Cell>
-                    <Table.Cell>{detail.service.serviceName}</Table.Cell>
+                    <Table.Cell>{detail.transaction}</Table.Cell>
+                    <Table.Cell>{detail.service}</Table.Cell>
                     <Table.Cell>
-                      {detail.qty} {detail.service.unit}
+                      {detail.qty} {detail.unit}
                     </Table.Cell>
-                    {/* <Table.Cell>{detail.lastupadte}</Table.Cell> */}
-                    <Table.Cell>{detail.updatedAt.toLocaleString()}</Table.Cell>
-                    <Table.Cell>{detail.process.process_name}</Table.Cell>
+
+                    <Table.Cell>
+                      {detail.day}-{detail.month}-{detail.year} {detail.hour}
+                      {":"}
+                      {detail.minute}
+                    </Table.Cell>
+                    {/* <Table.Cell>{"kakaka"}</Table.Cell> */}
+                    <Table.Cell>{detail.process}</Table.Cell>
                   </Table.Row>
                 ))}
               </Table.Body>
