@@ -39,7 +39,10 @@ class MobileContainer extends Component {
             vertical
             visible={sidebarOpened}
           >
-            <Menu.Item as={Link} to="/home" active={isHome}>
+            {/* <Menu.Item as={Link} to="/home" active={isHome}>
+              Home
+            </Menu.Item> */}
+            <Menu.Item as={Link} to="/" active={isHome}>
               Home
             </Menu.Item>
             <Menu.Item

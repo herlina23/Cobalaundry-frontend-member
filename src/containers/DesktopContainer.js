@@ -43,7 +43,10 @@ class DesktopContainer extends Component {
               size="large"
             >
               <Container>
-                <Menu.Item as={Link} to="/home" active={isHome}>
+                {/* <Menu.Item as={Link} to="/home" active={isHome}>
+                  Home
+                </Menu.Item> */}
+                <Menu.Item as={Link} to="/" active={isHome}>
                   Home
                 </Menu.Item>
                 <Menu.Item
